@@ -1,7 +1,7 @@
 const request = require('supertest');
 const server = require('./server');
 
-describe('/POST /peoples', () => {
+describe.skip('/POST /peoples', () => {
   it('should return a status code of 400 if first or last name is not provided', async () => {
     try {
     let response = await request(server).post('/peoples');
@@ -22,3 +22,11 @@ describe('/POST /peoples', () => {
     }
   })
 });
+
+describe.skip('GET /peoples', () => {
+  it('should return a list of people', async () => {
+    const response = await request(server).get('/peoples');
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({ first_name: 'justin', last_name: 'lowry' });
+  })
+})

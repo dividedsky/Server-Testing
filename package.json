@@ -2,9 +2,9 @@
 	"name": "testingserver",
 	"version": "1.0.0",
 	"description": "Server Testing Project",
-	"main": "./api/server.js",
+	"main": "./index.js",
 	"scripts": {
-		"test": "jest --watch --verbose",
+		"test": "cross-env DB_ENV=testing jest --watch --verbose",
 		"server": "nodemon"
 	},
 	"jest": {
@@ -22,6 +22,7 @@
 	},
 	"homepage": "https://github.com/LambdaSchool/Server-Testing#readme",
 	"devDependencies": {
+		"cross-env": "^5.2.0",
 		"jest": "^23.6.0",
 		"nodemon": "^1.18.9",
 		"supertest": "^3.3.0"
