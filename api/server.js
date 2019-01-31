@@ -29,3 +29,13 @@ server.get('/peoples', async(req, res) => {
     res.status(200).json(people);
   })
 module.exports = server;
+
+server.delete('/peoples/:id', async(req, res) => {
+  const {id} = req.params;
+  try {
+    db.deletePerson(id);
+    res.status(200).send('deleted');
+  } catch(err) {
+    res.status(500).json({error: err})
+  }
+})

@@ -19,7 +19,16 @@ describe('peoples helper', () => {
     await helpers.deletePerson(id);
     people = await helpers.getPeople();
     expect(people).toHaveLength(0);
-    
+  })
+  it('should delete all people', async () => {
+    const person = {first_name: 'justin', last_name: 'lowry'};
+    await helpers.addPerson(person);
+    await helpers.addPerson(person);
+    let people = await helpers.getPeople();
+    expect(people).toHaveLength(2);
+    await helpers.deleteAllPeople();
+    people = await helpers.getPeople();
+    expect(people).toHaveLength(0);
   })
 })
 
